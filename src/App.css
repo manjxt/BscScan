@@ -22,9 +22,6 @@ h5 {
   cursor: pointer;
 }
 
-/* .w-100 {
-  width: 80%;
-} */
 .flex-column {
   -ms-flex-direction: column;
   flex-direction: column;
@@ -87,4 +84,32 @@ h5 {
   margin-right: 5px;
   margin-left: 5px;
   border-radius: 5px;
+}
+
+.main_container {
+  background-color: #fff;
+  border-radius: 7px;
+}
+
+.main_heading_text {
+  color: rgb(119, 131, 143);
+  font-size: 1.1em;
+  padding-left: 20px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.heading_text_link {
+  color: rgb(52, 152, 221);
+  margin-left: 3px;
+}
+
+.seperator {
+  height: 1px;
+  background-color: rgb(230, 230, 230);
+  width: 96vw;
+  align-self: center;
+  margin: 30px 0 10px 30px;
 }
