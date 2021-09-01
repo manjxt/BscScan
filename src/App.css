@@ -89,6 +89,14 @@ h5 {
 .main_container {
   background-color: #fff;
   border-radius: 7px;
+  padding-left: 20px;
+  box-shadow: 2px 2px 2px rgb(240, 240, 240);
+  border-width: 2px;
+  border-color: rgb(230, 230, 230);
+}
+
+.main_parent_container {
+  padding: 0 1.5% 0 1.5%;
 }
 
 .main_heading_text {
@@ -106,10 +114,38 @@ h5 {
   margin-left: 3px;
 }
 
+.main_container_hover_text {
+  color: rgb(119, 131, 143);
+  font-size: 0.8em;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
 .seperator {
   height: 1px;
   background-color: rgb(230, 230, 230);
-  width: 96vw;
+  width: 96%;
   align-self: center;
+}
+
+.seperator-big {
   margin: 30px 0 10px 30px;
+}
+
+.main_container_text_heading {
+  font-size: 1.1em;
+  color: rgb(74, 79, 85);
+}
+
+.main_container_text {
+  padding: 10px 0 5px 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.main_container_row1 {
+  padding-top: 10px;
+  color: rgb(119, 131, 143);
+  font-size: 0.9em;
 }

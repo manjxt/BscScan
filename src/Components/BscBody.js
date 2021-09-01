@@ -6,7 +6,7 @@ export default function BscBody() {
   return (
     <div id="bodybsc">
       <BscHeading />
-      <div className="seperator"></div>
+      <div className="seperator seperator-big"></div>
       <BscMain />
     </div>
   );
