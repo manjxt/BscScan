@@ -110,8 +110,12 @@ h5 {
 }
 
 .heading_text_link {
-  color: rgb(52, 152, 221);
+  margin-bottom: 20px;
   margin-left: 3px;
+}
+
+.heading_text2 {
+  color: rgb(52, 152, 221);
 }
 
 .main_container_hover_text {
@@ -148,4 +152,31 @@ h5 {
   padding-top: 10px;
   color: rgb(119, 131, 143);
   font-size: 0.9em;
+}
+
+.main_container_text {
+  font-size: 1.1em;
+  padding-top: 8px;
+  text-decoration: none;
+}
+
+.main_container_text3 {
+  font-size: 1.1em;
+  padding-top: 19.5px;
+  text-decoration: none;
+}
+
+.main_container_text2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.icon_color {
+  color: rgb(119, 131, 143);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 10px 0 10px;
+  text-decoration: none;
 }
