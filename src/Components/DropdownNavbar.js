@@ -1,6 +1,6 @@
 import React from "react";
 import bnb from "../Assests/bnb.png";
-import { Nav, NavDropdown, Navbar, Button } from "react-bootstrap";
+import { Nav, NavDropdown, Navbar } from "react-bootstrap";
 
 export default function DropdownNavbar() {
   return (

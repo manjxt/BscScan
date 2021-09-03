@@ -1,6 +1,7 @@
 import React from "react";
 import BscHeading from "./BscHeading";
 import BscMain from "./BscMain";
+import BscMain2 from "./BscMain2";
 
 export default function BscBody() {
   return (
@@ -8,6 +9,7 @@ export default function BscBody() {
       <BscHeading />
       <div className="seperator seperator-big"></div>
       <BscMain />
+      <BscMain2 />
     </div>
   );
 }
