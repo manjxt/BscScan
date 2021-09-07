@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import HoverToolTip from "./HoverToolTip";
 
 console.log(config.autoA11y); // true
 
 export default function BscMain() {
+  const [showCirculatingCap, setShowCirculatingCap] = useState(false);
+
+  const handleToggleCirculatingCap = () =>
+    setShowCirculatingCap(!showCirculatingCap);
+
   return (
     <div className="container3">
       <div className="main_heading_text">
@@ -24,9 +30,11 @@ export default function BscMain() {
                 <p className="main_container_text_heading">
                   <b>Overview</b>
                 </p>
-                <p className="main_container_hover_text">
-                  <b>BEP - 20</b>
-                </p>
+                <div className="circulatingCapButton">
+                  <p className="main_container_hover_text ">
+                    <b>BEP - 20</b>
+                  </p>
+                </div>
               </div>
               <div className="seperator"></div>
 
@@ -38,10 +46,42 @@ export default function BscMain() {
                   <p>$0.01 @ 0.000027 BNB (+7.21%)</p>
                 </Col>
                 <Col>
-                  <div className="token main_container_row1">
-                    <p>FULLY DILUTED MARKET CAP</p>
-                    <i class="fa fa-question-circle"></i>
-                  </div>
+                  {showCirculatingCap ? (
+                    <div>
+                      <div className="token main_container_row1">
+                        <p>CIRCULATING SUPPLY MARKET CAP</p>
+                      </div>
+
+                      <HoverToolTip text="Click to switch back">
+                        <button
+                          onClick={handleToggleCirculatingCap}
+                          className="circulatingCapButton"
+                        >
+                          <p>$0.00</p>
+                        </button>
+                      </HoverToolTip>
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="token main_container_row1">
+                        <p>FULLY DILUTED MARKET CAP</p>
+                        <HoverToolTip
+                          placement="top"
+                          text="Calculated by multiplying the token Total Supply with the current market price per token "
+                        >
+                          <i class="fa fa-question-circle"></i>
+                        </HoverToolTip>
+                      </div>
+                      <HoverToolTip text="Click to switch">
+                        <button
+                          onClick={handleToggleCirculatingCap}
+                          className="circulatingCapButton"
+                        >
+                          <p>$2,465,365.15</p>
+                        </button>
+                      </HoverToolTip>
+                    </div>
+                  )}
                 </Col>
               </Row>
               <div className="seperator"></div>

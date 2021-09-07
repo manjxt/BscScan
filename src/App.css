@@ -45,6 +45,10 @@ h5 {
   font-size: 1.1em;
 }
 
+#dropdown_navbar:hover .blockchain {
+  display: block;
+}
+
 .container1 {
   background-color: rgb(234, 244, 251);
   padding: 3px;
@@ -121,8 +125,7 @@ h5 {
 .main_container_hover_text {
   color: rgb(119, 131, 143);
   font-size: 0.8em;
-  padding-left: 10px;
-  padding-top: 5px;
+  padding: 5px 5px 0 5px;
 }
 
 .seperator {
@@ -139,17 +142,19 @@ h5 {
 .main_container_text_heading {
   font-size: 1.1em;
   color: rgb(74, 79, 85);
+  margin-right: 10px;
 }
 
 .main_container_text {
   padding: 10px 0 5px 5px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .main_container_row1 {
   padding-top: 10px;
+  margin-bottom: -15px;
   color: rgb(119, 131, 143);
   font-size: 0.9em;
 }
@@ -234,4 +239,14 @@ h5 {
   color: rgb(184, 186, 178);
   font-size: 0.8em;
   margin: 5px 0 5px 0;
+}
+
+.circulatingCapButton {
+  border-radius: 10px;
+  border-color: transparent;
+  box-shadow: transparent;
+  height: 27px;
+  background-color: rgb(241, 242, 244);
+  color: #333;
+  font-size: 0.9em;
 }

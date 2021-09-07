@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import bnb from "../Assests/bnb.png";
 import { Nav, NavDropdown, Navbar } from "react-bootstrap";
 
@@ -13,7 +13,7 @@ export default function DropdownNavbar() {
           navbarScroll
         >
           <Nav.Link href="#action1">Home</Nav.Link>
-          <NavDropdown title="Blockchain">
+          <NavDropdown title="Blockchain" className="blockchain">
             <NavDropdown.Item href="#action2">Top Accounts</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#action3">View Txns</NavDropdown.Item>
@@ -84,3 +84,27 @@ export default function DropdownNavbar() {
     </div>
   );
 }
+
+// const [click, setClick] = useState(false);
+// const [dropdown, setDropdown] = useState(false);
+
+// const handleClick = () => {
+//   setClick(!click);
+// };
+// const closeMobileMenu = () => setClick(false);
+
+// const onMouseEnter = () => {
+//   if (window.innerWidth < 960) {
+//     setDropdown(false);
+//   } else {
+//     setDropdown(true);
+//   }
+// };
+
+// const onMouseLeave = () => {
+//   if (window.innerWidth < 960) {
+//     setDropdown(false);
+//   } else {
+//     setDropdown(false);
+//   }
+// };
