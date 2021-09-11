@@ -8,6 +8,7 @@ import {
   DropdownButton,
   Dropdown,
 } from "react-bootstrap";
+import HoverToolTip from "./HoverToolTip";
 
 export default function BscHeading() {
   return (
@@ -25,7 +26,10 @@ export default function BscHeading() {
             ></img>
             <h3>{"  "} Token </h3>
             <h5>
-              Oikos Network Token <i class="fa fa-info-circle"></i>
+              Oikos Network Token{" "}
+              <HoverToolTip text="Public Note: Double check the Token Contract Address to verify that you are interacting with the intended token contract">
+                <i class="fa fa-info-circle"></i>
+              </HoverToolTip>
             </h5>
           </div>
         </Col>

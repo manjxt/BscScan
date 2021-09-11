@@ -10,6 +10,13 @@ h5 {
   padding-top: 5.2px;
   margin-left: 5px;
 }
+
+.hmm {
+  color: rgb(119, 131, 143);
+  padding-top: 5.2px;
+  margin-left: 5px;
+}
+
 .App {
   text-align: center;
 }
@@ -186,16 +193,23 @@ h5 {
   text-decoration: none;
 }
 
-.navbar_second {
+#navbar_second {
   margin: 30px 10px 20px 10px;
   background-color: #fff;
   border-radius: 7px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-evenly;
   box-shadow: 2px 2px 2px rgb(240, 240, 240);
   border-width: 2px;
   border-color: rgb(230, 230, 230);
+  color: rgb(110, 115, 120);
+}
+.modifiednavlink {
+  color: rgb(110, 115, 120);
+  background-color: red;
+  z-index: 1000;
 }
 
 .footer_container {

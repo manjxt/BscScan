@@ -30,11 +30,16 @@ export default function BscMain() {
                 <p className="main_container_text_heading">
                   <b>Overview</b>
                 </p>
-                <div className="circulatingCapButton">
-                  <p className="main_container_hover_text ">
-                    <b>BEP - 20</b>
-                  </p>
-                </div>
+                <HoverToolTip
+                  placement="top"
+                  text="BEP-20 or Compatible token type"
+                >
+                  <div className="circulatingCapButton">
+                    <p className="main_container_hover_text ">
+                      <b>BEP - 20</b>
+                    </p>
+                  </div>
+                </HoverToolTip>
               </div>
               <div className="seperator"></div>
 
@@ -92,7 +97,11 @@ export default function BscMain() {
                 <Col>
                   <p className="main_container_text main_container_text2">
                     186,994,359.011005 OKS
-                    <i class="fa fa-info-circle"></i>
+                    <HoverToolTip text="Submit burn details to us if you are project owner">
+                      <div>
+                        <i class="fa fa-info-circle"></i>
+                      </div>
+                    </HoverToolTip>
                   </p>
                 </Col>
               </Row>
@@ -171,10 +180,26 @@ export default function BscMain() {
                 </Col>
                 <Col>
                   <div className="icon_color">
-                    <a class="main_container_text3  icon_color fa fa-facebook-f"></a>
-                    <a class="main_container_text3  icon_color fa fa-twitter"></a>
-                    <a class="main_container_text3  icon_color fa fa-github"></a>
-                    <a class="main_container_text3  icon_color fa fa-telegram"></a>
+                    <HoverToolTip text="Facebook :" placement="top">
+                      <div>
+                        <a class="main_container_text3  icon_color fa fa-facebook-f"></a>
+                      </div>
+                    </HoverToolTip>
+                    <HoverToolTip text="Twitter :" placement="top">
+                      <div>
+                        <a class="main_container_text3  icon_color fa fa-twitter"></a>
+                      </div>
+                    </HoverToolTip>
+                    <HoverToolTip text="GitHub :" placement="top">
+                      <div>
+                        <a class="main_container_text3  icon_color fa fa-github"></a>
+                      </div>
+                    </HoverToolTip>
+                    <HoverToolTip text="Telegram :" placement="top">
+                      <div>
+                        <a class="main_container_text3  icon_color fa fa-telegram"></a>
+                      </div>
+                    </HoverToolTip>
                   </div>
                 </Col>
               </Row>
