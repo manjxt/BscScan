@@ -8,6 +8,8 @@ export default function BscHeading2({ selected, setSelected }) {
     padding: "10px",
     color: selected === val ? "rgb(52, 152, 219)" : "rgb(110, 115, 120)",
     fontSize: "1.1em",
+    fontWeight: "500",
+    marginTop: "20px",
   });
 
   return (
