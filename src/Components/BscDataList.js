@@ -1,130 +1,109 @@
 import React, { useState, useEffect } from "react";
-import data from "../Assests/transferData.json";
 import { Container, Row, Col } from "react-bootstrap";
 import moment from "moment";
-const last = data.length / 25;
+import {
+  Tile as TransfersTile,
+  Heading as TransfersHeading,
+} from "./dataList/transfers.js";
+import {
+  Tile as HoldersTile,
+  Heading as HoldersHeading,
+} from "./dataList/holders.js";
+import { Container as InfoData } from "./dataList/info.js";
 
 export default function BscDataList({ selected }) {
+  const [data, setData] = useState(require(`../Assests/${selected}.json`));
+  const last = data.length / 10;
   const [currentPage, setCurrentPage] = useState(1);
-  const [transfers, setTransfers] = useState(data.slice(0, 25));
+  const [paginatedData, setPaginatedData] = useState(data.slice(0, 10));
+  useEffect(() => {
+    const _data = require(`../Assests/${selected}.json`);
+    setData(_data);
+    setCurrentPage(1);
+    setPaginatedData(_data.slice(0, 10));
+  }, [selected]);
 
   useEffect(() => {
-    setTransfers(data.slice(25 * (currentPage - 1), 25 * currentPage));
+    setPaginatedData(data.slice(10 * (currentPage - 1), 10 * currentPage));
   }, [currentPage]);
+
+  const dataCheck = () => {
+    switch (selected) {
+      case "transfers":
+        return renderTransfers();
+      case "holders":
+        return renderHolders();
+      case "info":
+        return renderInfo();
+      default:
+        return <></>;
+    }
+  };
+
+  const renderInfo = () => <InfoData />;
+
+  const renderHolders = () => (
+    <>
+      <HoldersHeading
+        data={data}
+        last={last}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
+      <div className="seperator"></div>
+      {paginatedData.map((item, index) => (
+        <HoldersTile {...item} index={index} key={index} />
+      ))}
+      <Footer data={data} last={last} />
+    </>
+  );
+
+  const renderTransfers = () => (
+    <>
+      <TransfersHeading
+        data={data}
+        last={last}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
+      <div className="seperator"></div>
+      {paginatedData.map((item, index) => (
+        <TransfersTile {...item} key={index} />
+      ))}
+      <Footer data={data} last={last} />
+    </>
+  );
+
   return (
     <Container fluid style={{ alignItems: "center" }}>
-      <Heading setCurrentPage={setCurrentPage} currentPage={currentPage} />
-      <div className="seperator"></div>
-      {transfers.map((item, index) => (
-        <Tile {...item} key={index} />
-      ))}
+      {dataCheck()}
     </Container>
   );
 }
 
-const Heading = ({ currentPage, setCurrentPage }) => (
-  <div
-    style={{
-      paddingLeft: "1%",
-      paddingRight: "1%",
-    }}
-  >
-    <div className="pages">
-      <p>A total of 15,885 transactions found</p>
-      <div>
-        <button onClick={() => setCurrentPage(1)}>First</button>
-        <button
-          onClick={() => setCurrentPage((prev) => prev - 1)}
-        >{`<`}</button>
-        <button>
-          Page {currentPage} of {data.length / 25}
-        </button>
-        <button onClick={() => setCurrentPage((prev) => prev + 1)}>
-          {">"}
-        </button>
-        <button onClick={() => setCurrentPage(last)}>Last</button>
-      </div>
-    </div>
-    <div className="seperator"></div>
-    <Row className="dataListHeading">
-      <Col>Txn Hash</Col>
-      <Col>
-        Method{"  "}
-        <i class="fa fa-info-circle"></i>
-      </Col>
-      <Col>Age</Col>
-      <Col>From</Col>
-      <Col>To</Col>
-      <Col>Quantity</Col>
-    </Row>
-    <div className="seperator" />
+const Footer = ({ setCurrentPage, currentPage, data, last }) => (
+  <div className="pagesNavigation2">
+    <button className="pageNavigationButton" onClick={() => setCurrentPage(1)}>
+      First
+    </button>
+    <button
+      className="pageNavigationButton"
+      onClick={() => setCurrentPage((prev) => prev - 1)}
+    >{`<`}</button>
+    <button className="pageNavigationButton">
+      Page {currentPage} of {data.length / 10}
+    </button>
+    <button
+      className="pageNavigationButton"
+      onClick={() => setCurrentPage((prev) => prev + 1)}
+    >
+      {">"}
+    </button>
+    <button
+      className="pageNavigationButton"
+      onClick={() => setCurrentPage(last)}
+    >
+      Last
+    </button>
   </div>
 );
-
-const commonTileStyle = {
-  bacgroundColor: "#fff",
-  fontSize: "15px",
-  color: "#000",
-  fontWeight: "500",
-};
-
-const Tile = ({ txHash, from, to, timeStamp, dateTime, quantity, method }) => {
-  return (
-    <div
-      style={{
-        bacgroundColor: "#fff",
-        paddingLeft: "10px",
-        paddingRight: "10px",
-      }}
-    >
-      <Container
-        fluid
-        style={{
-          paddingTop: "1%",
-          paddingBottom: "1%",
-          backgroundColor: "#fff",
-        }}
-      >
-        <Row className="dataListHeading">
-          <Col
-            style={{
-              ...commonTileStyle,
-              color: "rgb(52, 152, 219)",
-            }}
-          >
-            {txHash && txHash.slice(0, 15)}...
-          </Col>
-          <Col style={{ ...commonTileStyle }}>
-            <div
-              style={{
-                backgroundColor: "rgb(225,237,247)",
-                maxWidth: "150px",
-                padding: "7px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "12px",
-                borderRadius: "10px",
-              }}
-            >
-              {method}
-            </div>
-          </Col>
-          <Col style={{ ...commonTileStyle }}>
-            {timeStamp && moment(`${dateTime}`).fromNow()}
-          </Col>
-          <Col style={{ ...commonTileStyle, color: "rgb(52, 152, 219)" }}>
-            {from && from.slice(0, 15)}...
-          </Col>
-          <Col style={{ ...commonTileStyle, color: "rgb(52, 152, 219)" }}>
-            {to && to.slice(0, 15)}...
-          </Col>
-          <Col style={{ ...commonTileStyle }}>
-            {quantity && parseFloat(quantity).toFixed(10)}
-          </Col>
-        </Row>
-      </Container>
-      <div className="seperator" />
-    </div>
-  );
-};
