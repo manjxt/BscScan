@@ -10,21 +10,30 @@ import {
   Heading as HoldersHeading,
 } from "./dataList/holders.js";
 import { Container as InfoData } from "./dataList/info.js";
+import {
+  Tile as ExchangeTile,
+  Heading as ExchangeHeading,
+} from "./dataList/exchange.js";
 
 export default function BscDataList({ selected }) {
-  const [data, setData] = useState(require(`../Assests/${selected}.json`));
+  const [data, setData] = useState(
+    selected !== "info" ? require(`../Assests/${selected}.json`) : []
+  );
   const last = data.length / 10;
   const [currentPage, setCurrentPage] = useState(1);
   const [paginatedData, setPaginatedData] = useState(data.slice(0, 10));
   useEffect(() => {
-    const _data = require(`../Assests/${selected}.json`);
+    const _data =
+      selected !== "info" ? require(`../Assests/${selected}.json`) : [];
     setData(_data);
     setCurrentPage(1);
-    setPaginatedData(_data.slice(0, 10));
+    setPaginatedData(_data && _data.slice(0, 10));
   }, [selected]);
 
   useEffect(() => {
-    setPaginatedData(data.slice(10 * (currentPage - 1), 10 * currentPage));
+    setPaginatedData(
+      data && data.slice(10 * (currentPage - 1), 10 * currentPage)
+    );
   }, [currentPage]);
 
   const dataCheck = () => {
@@ -35,25 +44,44 @@ export default function BscDataList({ selected }) {
         return renderHolders();
       case "info":
         return renderInfo();
+      case "exchange":
+        return renderExchange();
       default:
         return <></>;
     }
   };
+
+  const renderExchange = () => (
+    <>
+      <ExchangeHeading
+        data={data && data.length ? data : []}
+        last={last}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
+      <div className="seperator"></div>
+      {paginatedData &&
+        paginatedData.map((item, index) => (
+          <ExchangeTile {...item} index={index} key={index} />
+        ))}
+    </>
+  );
 
   const renderInfo = () => <InfoData />;
 
   const renderHolders = () => (
     <>
       <HoldersHeading
-        data={data}
+        data={data && data.length ? data : []}
         last={last}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
       />
       <div className="seperator"></div>
-      {paginatedData.map((item, index) => (
-        <HoldersTile {...item} index={index} key={index} />
-      ))}
+      {paginatedData &&
+        paginatedData.map((item, index) => (
+          <HoldersTile {...item} index={index} key={index} />
+        ))}
       <Footer data={data} last={last} />
     </>
   );

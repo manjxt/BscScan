@@ -127,6 +127,8 @@ h5 {
 
 .heading_text2 {
   color: rgb(52, 152, 221);
+  text-decoration: none;
+  padding: 0 3px 0 3px;
 }
 
 .main_container_hover_text {
@@ -208,8 +210,8 @@ h5 {
 }
 .modifiednavlink {
   color: rgb(110, 115, 120);
-  background-color: red;
   z-index: 1000;
+  text-decoration: none;
 }
 
 .footer_container {
@@ -299,4 +301,19 @@ h5 {
 .pagesNavigation2 {
   margin: 40px 0 80px 80%;
   background-color: #fff;
+}
+
+.infoBody {
+  color: black;
+  font-size: 1.1em;
+  margin: 20px 20px 40px 20px;
+}
+
+.infoBody2 {
+  font-size: 0.9em;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  margin: 10px 0 60px 20px;
+  text-decoration: none;
 }

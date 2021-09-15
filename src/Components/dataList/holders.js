@@ -20,8 +20,6 @@ export const Tile = ({
     <div
       style={{
         bacgroundColor: "#fff",
-        paddingLeft: "10px",
-        paddingRight: "10px",
       }}
     >
       <Container
@@ -34,6 +32,7 @@ export const Tile = ({
       >
         <Row className="dataListHeading">
           <Col
+            md={1}
             style={{
               ...commonTileStyle,
             }}
@@ -97,7 +96,7 @@ export const Heading = ({ currentPage, setCurrentPage, data, last }) => (
     </div>
     <div className="seperator"></div>
     <Row className="dataListHeading">
-      <Col>Rank</Col>
+      <Col md={1}>Rank</Col>
       <Col>Address</Col>
       <Col>Quantity</Col>
       <Col>From</Col>
