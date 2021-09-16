@@ -15,14 +15,19 @@ import {
   Heading as ExchangeHeading,
 } from "./dataList/exchange.js";
 import ReadData from "./dataList/read.js";
+import WriteData from "./dataList/write.js";
 import {
   Tile as DexTradesTile,
   Heading as DexTradesHeading,
 } from "./dataList/dexTrades.js";
+import CommentsData from "./dataList/comments.js";
 
 export default function BscDataList({ selected }) {
   const [data, setData] = useState(
-    selected !== "info" && selected !== "read" && selected !== "write"
+    selected !== "info" &&
+      selected !== "read" &&
+      selected !== "write" &&
+      selected !== "comments"
       ? require(`../Assests/${selected}.json`)
       : []
   );
@@ -31,7 +36,10 @@ export default function BscDataList({ selected }) {
   const [paginatedData, setPaginatedData] = useState(data.slice(0, 10));
   useEffect(() => {
     const _data =
-      selected !== "info" && selected !== "read" && selected !== "write"
+      selected !== "info" &&
+      selected !== "read" &&
+      selected !== "write" &&
+      selected !== "comments"
         ? require(`../Assests/${selected}.json`)
         : [];
     setData(_data);
@@ -59,10 +67,16 @@ export default function BscDataList({ selected }) {
         return renderDexTrades();
       case "read":
         return renderRead();
+      case "write":
+        return renderWrite();
+      case "comments":
+        return renderComments();
       default:
         return <></>;
     }
   };
+
+  const renderComments = () => <CommentsData />;
 
   const renderDexTrades = () => (
     <>
@@ -81,6 +95,7 @@ export default function BscDataList({ selected }) {
   );
 
   const renderRead = () => <ReadData />;
+  const renderWrite = () => <WriteData />;
 
   const renderExchange = () => (
     <>

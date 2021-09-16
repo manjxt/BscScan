@@ -321,10 +321,58 @@ h5 {
 .readContract {
   margin: 20px 10px 20px 10px;
   font-family: Arial, "Helvetica", sans-serif;
+  padding: 0 0 10px 0;
 }
 
 .readCardHead {
   text-decoration: none;
   color: black;
   font-family: Arial, "Helvetica", sans-serif;
+}
+
+.readCardLink {
+  text-decoration: none;
+  color: rgb(52, 152, 221);
+  font-family: Arial, "Helvetica", sans-serif;
+  margin-left: 5px;
+}
+
+.readButton {
+  border-radius: 5px;
+  background-color: white;
+  border-width: 1px;
+  padding: 5px 10px 5px 10px;
+  border-color: rgb(140, 152, 164);
+}
+
+.readButton2 {
+  border-radius: 5px;
+  background-color: rgb(90, 170, 255);
+  border-width: 0;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  border-color: rgb(140, 152, 164);
+}
+
+.blah {
+  margin: 20px 0 5px 0;
+  font-family: Arial, "Helvetica", sans-serif;
+  color: rgb(140, 152, 164);
+}
+
+.blah2 {
+  margin: 30px 20px 40px 0;
+  font-family: Arial, "Helvetica", sans-serif;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.blah3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
 }
