@@ -14,17 +14,26 @@ import {
   Tile as ExchangeTile,
   Heading as ExchangeHeading,
 } from "./dataList/exchange.js";
+import ReadData from "./dataList/read.js";
+import {
+  Tile as DexTradesTile,
+  Heading as DexTradesHeading,
+} from "./dataList/dexTrades.js";
 
 export default function BscDataList({ selected }) {
   const [data, setData] = useState(
-    selected !== "info" ? require(`../Assests/${selected}.json`) : []
+    selected !== "info" && selected !== "read" && selected !== "write"
+      ? require(`../Assests/${selected}.json`)
+      : []
   );
   const last = data.length / 10;
   const [currentPage, setCurrentPage] = useState(1);
   const [paginatedData, setPaginatedData] = useState(data.slice(0, 10));
   useEffect(() => {
     const _data =
-      selected !== "info" ? require(`../Assests/${selected}.json`) : [];
+      selected !== "info" && selected !== "read" && selected !== "write"
+        ? require(`../Assests/${selected}.json`)
+        : [];
     setData(_data);
     setCurrentPage(1);
     setPaginatedData(_data && _data.slice(0, 10));
@@ -46,10 +55,32 @@ export default function BscDataList({ selected }) {
         return renderInfo();
       case "exchange":
         return renderExchange();
+      case "dexTrades":
+        return renderDexTrades();
+      case "read":
+        return renderRead();
       default:
         return <></>;
     }
   };
+
+  const renderDexTrades = () => (
+    <>
+      <DexTradesHeading
+        data={data}
+        last={last}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
+      <div className="seperator"></div>
+      {paginatedData.map((item, index) => (
+        <DexTradesTile {...item} key={index} />
+      ))}
+      <Footer data={data} last={last} />
+    </>
+  );
+
+  const renderRead = () => <ReadData />;
 
   const renderExchange = () => (
     <>
