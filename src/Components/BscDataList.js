@@ -27,7 +27,8 @@ export default function BscDataList({ selected }) {
     selected !== "info" &&
       selected !== "read" &&
       selected !== "write" &&
-      selected !== "comments"
+      selected !== "comments" &&
+      selected !== "analytics"
       ? require(`../Assests/${selected}.json`)
       : []
   );
@@ -39,7 +40,8 @@ export default function BscDataList({ selected }) {
       selected !== "info" &&
       selected !== "read" &&
       selected !== "write" &&
-      selected !== "comments"
+      selected !== "comments" &&
+      selected !== "analytics"
         ? require(`../Assests/${selected}.json`)
         : [];
     setData(_data);
@@ -71,10 +73,14 @@ export default function BscDataList({ selected }) {
         return renderWrite();
       case "comments":
         return renderComments();
+      case "analytics":
+        return renderAnalytics();
       default:
         return <></>;
     }
   };
+
+  const renderAnalytics = () => <></>;
 
   const renderComments = () => <CommentsData />;
 
